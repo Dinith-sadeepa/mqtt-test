@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            mqttAsyncClient = new MqttAsyncClient("tcp://139.59.88.228", UUID.randomUUID().toString());
+            mqttAsyncClient = new MqttAsyncClient("tcp://13.127.205.221", UUID.randomUUID().toString());
             CallBack callBack = new CallBack();
             mqttAsyncClient.setCallback(callBack);
 
