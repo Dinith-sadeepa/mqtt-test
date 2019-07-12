@@ -6,20 +6,16 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import java.util.UUID;
 
 public class Main {
-
-    public static MqttAsyncClient mqttAsyncClient;
-
     public static void main(String[] args) {
         try {
-            mqttAsyncClient = new MqttAsyncClient("tcp://13.127.205.221", UUID.randomUUID().toString());
+            MqttAsyncClient mqttAsyncClient = new MqttAsyncClient("tcp://13.127.205.221", UUID.randomUUID().toString());
             CallBack callBack = new CallBack();
             mqttAsyncClient.setCallback(callBack);
 
             IMqttToken token = mqttAsyncClient.connect();
             token.waitForCompletion();
-            mqttAsyncClient.subscribe("/ceyentra/topic1 ", 0);
-            mqttAsyncClient.publish("/ceyentra/topic2 ", new MqttMessage("hello1".getBytes()));
-            System.out.println(token);
+            mqttAsyncClient.subscribe("/ceyentra/topic1", 0);
+            mqttAsyncClient.publish("/ceyentra/topic2", new MqttMessage("hello1".getBytes()));
         } catch (MqttException e) {
             e.printStackTrace();
         }
